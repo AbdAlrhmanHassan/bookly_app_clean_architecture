@@ -11,6 +11,7 @@ class FetchFeaturedBooksUseCase {
 
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks() 
   {
+    //1
     return homeRepo.fetchFeaturedBooks();
   }
 }
