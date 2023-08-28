@@ -24,6 +24,8 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     var data = await apiService.get(
         url: 'volumes?Filtering=free-ebooks&Sorting=newest&q=Flutter');
     List<BookEntity> books = getBooksList(data);
+
+    saveBooksData(books, kNewestBox);
     return books;
   }
 }
