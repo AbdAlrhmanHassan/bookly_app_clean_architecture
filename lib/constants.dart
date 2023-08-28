@@ -9,3 +9,5 @@ TextTheme texturinaTextTheme =
     GoogleFonts.texturinaTextTheme(ThemeData.dark().textTheme);
 
 TextStyle texturinaText = GoogleFonts.texturina(textStyle: const TextStyle());
+
+ String kFeaturedBox = 'featured_box';
