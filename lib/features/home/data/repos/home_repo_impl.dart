@@ -4,6 +4,7 @@ import 'package:bookly_app_advanced_course/features/home/data/data_sources/home_
 import 'package:bookly_app_advanced_course/features/home/domain/entities/book_entity.dart';
 import 'package:bookly_app_advanced_course/features/home/domain/repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImpl extends HomeRepo {
   final HomeLocalDataSource homeLocalDataSource;
@@ -14,30 +15,38 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks() async {
     try {
-      var booksList = homeLocalDataSource.fetchFeaturedBooks();
+      List<BookEntity> booksList = homeLocalDataSource.fetchFeaturedBooks();
       if (booksList.isNotEmpty) {
         return right(booksList);
       } else {
-        var books = await homeRemoteDataSource.fetchFeaturedBooks();
-        return (right(books));
+        booksList = await homeRemoteDataSource.fetchFeaturedBooks();
+        return (right(booksList));
       }
     } catch (e) {
-      return left(ServerFailure(e.toString()));
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
     }
   }
 
   @override
   Future<Either<Failure, List<BookEntity>>> fetchNewsetBooks() async {
     try {
-      var booksList = homeLocalDataSource.fetchNewsetBooks();
+      List<BookEntity> booksList = homeLocalDataSource.fetchNewsetBooks();
       if (booksList.isNotEmpty) {
         return right(booksList);
       } else {
-        var books = await homeRemoteDataSource.fetchNewsetBooks();
-        return (right(books));
+        booksList = await homeRemoteDataSource.fetchNewsetBooks();
+        return (right(booksList));
       }
     } catch (e) {
-      return left(ServerFailure(e.toString()));
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
     }
   }
 }
