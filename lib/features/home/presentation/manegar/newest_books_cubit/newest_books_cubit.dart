@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:bookly_app_advanced_course/features/home/domain/entities/book_entity.dart';
 import 'package:bookly_app_advanced_course/features/home/domain/use_cases/fetch_newest_books_use_case.dart';
 import 'package:dartz/dartz.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../../core/errors/failure.dart';
 
