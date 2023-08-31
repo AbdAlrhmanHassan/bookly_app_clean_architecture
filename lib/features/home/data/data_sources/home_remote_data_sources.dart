@@ -2,7 +2,5 @@ import 'package:bookly_app_advanced_course/features/home/domain/entities/book_en
 
 abstract class HomeRemoteDataSource {
   Future<List<BookEntity>> fetchNewsetBooks();
-  Future<List<BookEntity>> fetchFeaturedBooks();
+  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0});
 }
-
-

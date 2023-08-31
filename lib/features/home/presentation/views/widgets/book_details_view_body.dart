@@ -48,7 +48,7 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: screenWidth * .24),
-          child: const CustomListViewItem(),
+          child: const CustomListViewItem(image: "",),
         ),
         const SizedBox(height: 32),
         const Text("The Jungle Book", style: Styles.textStyle30),

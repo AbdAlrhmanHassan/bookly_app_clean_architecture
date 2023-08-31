@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
 
-class FetchNewestBooksUseCase extends UseCase<List<BookEntity>> {
+class FetchNewestBooksUseCase extends UseCase<List<BookEntity>,int> {
   final HomeRepo homeRepo;
 
   FetchNewestBooksUseCase({required this.homeRepo});
